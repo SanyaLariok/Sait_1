@@ -1,0 +1,104 @@
+/*----------------------- Главная структура сайта ------------------------------ */
+
+body {
+    font: 10pt Arial, Helvetica, sans-serif;
+    background: #181b22;
+    overflow: scroll;
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+    background: #16dbdb;
+}
+
+#header {
+    font-size: 2.2em;
+    text-align: center;
+    padding: 5px;
+    background: rgb(250, 175, 63);
+    color: rgb(255, 255, 249);
+}
+
+#sidebar {
+    margin-top: 90px;
+    width: 110px;
+    padding: 0;
+    float: left;
+}
+
+#content {
+    height: 60%;
+    margin-left: 130px;
+    padding: 10px;
+    text-align: center;
+    background: rgb(240, 245, 245);
+}
+
+#footer_data {
+    background: #8fa89b;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
+
+/*----------------------- "Элементы" ------------------------------ */
+
+h1 {
+    font-size: 36px;
+    margin: 0.7%;
+    color: rgb(255, 170, 0);
+}
+
+h2 {
+    margin: auto;
+    color: #961919;
+}
+
+.rounded {
+    counter-reset: li;
+    list-style: none;
+    font: 14px "Trebuchet MS", "Lucida Sans";
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.rounded a {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #DAD2CA;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: .3s ease-out;
+}
+
+.img {
+    width: 34%;
+    height: 34%;
+}
+.img1 {
+    width: 34%;
+    height: 34%;
+}
+
+td {
+    font-size: 0.8em;
+    padding: 5px 7px;
+    border: 1px solid #A9E2CC;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid #A9E2CC;
+}
+
+table {
+    border-collapse: collapse;
+    line-height: 1.1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background: radial-gradient(farthest-corner at 50% 50%, white, #DCECF8);
+    color: #0C213B;
+}
