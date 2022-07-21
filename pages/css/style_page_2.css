@@ -112,4 +112,40 @@ td {
 .image-border {
     width: 34%;
     height: 34%;
-    border: 3px outset rgba(255,  192,  0, 1);}
+    border: 3px outset rgba(255,  192,  0, 1);
+}
+    
+.but_for_tab {
+    display: inline-block;
+    color: #fff;
+    background: rgba(255,  192,  0, 1);
+    padding:  1% 2%;
+    width: 90px;
+    height: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    font-family: sans-serif;
+    margin: 1% 2%;
+    font-size: 1.2em;
+    text-decoration: none;
+    outline: none;
+}
+
+.but_for_tab:hover {
+    background: rgb(255, 217, 103);
+}
+
+.hidden_block {
+    display: none;
+}
+
+.visible_block {
+    display: block;
+}
+
+.button {
+    text-decoration: none;
+    outline: none;
+}
+
