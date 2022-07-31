@@ -1,0 +1,704 @@
+<!DOCTYPE HTML PUBLIC>
+<HTML>
+
+<HEAD>
+    <TITLE>Панель управления</TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="./index_data/img/favicon.svg" type=" image/svg+xml">
+
+    <link rel="stylesheet" href="./index_data/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./index_data/css/style_.css" />
+    <link rel="stylesheet" href="./index_data/css/signin.css">
+    <link rel="stylesheet" href="./index_data/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link href="./index_data/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="./index_data/css/bootstrap/bootstrap-extended.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="./index_data/js/Chart.js/chart.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery.min3.1.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
+
+    <SCRIPT type="text/javascript">
+        var zTree;
+        var demoIframe;
+
+        var setting = {
+            view: {
+                dblClickExpand: false,
+                showLine: true,
+                selectedMulti: false
+            },
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pId",
+                    rootPId: ""
+                }
+            },
+            callback: {
+                beforeClick: function (treeId, treeNode) {
+
+                    var zTree = $.fn.zTree.getZTreeObj("tree");
+                    if (treeNode.isParent) {
+                        zTree.expandNode(treeNode);
+                        return false;
+                    } else {
+                        demoIframe.attr("src", treeNode.file + ".html");
+                        var cfg_msg_send = String(treeNode.id) + ';' + String(treeNode.name);
+                        sessionStorage.setItem('cfg_tree_node', cfg_msg_send);
+                        return true;
+                    }
+                }
+            }
+        };
+
+        var zNodes = [];
+
+        $(document).ready(function () {
+            var t = $("#tree");
+            t = $.fn.zTree.init(t, setting, zNodes);
+            demoIframe = $("#testIframe");
+            demoIframe.bind("load", loadReady);
+            var zTree = $.fn.zTree.getZTreeObj("tree");
+            zTree.selectNode(zTree.getNodeByParam("id", 101));
+
+        });
+
+        function loadReady() {
+            var bodyH = demoIframe.contents().find("body").get(0).scrollHeight,
+                htmlH = demoIframe.contents().find("html").get(0).scrollHeight,
+                maxH = Math.max(bodyH, htmlH),
+                minH = Math.min(bodyH, htmlH),
+                h = demoIframe.height() >= maxH ? minH : maxH;
+            if (h < 530) h = 530;
+            demoIframe.height(h);
+            var code, log, className = "dark";
+        }
+        $(document).ready(function () {
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+
+    </SCRIPT>
+    <style type="text/css">
+        .ztree li span.button.normal_ico_open {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.normal_ico_close {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_open {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_close {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.normal_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.model_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/4.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+    </style>
+</HEAD>
+
+<BODY>
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 999;
+            -webkit-animation: fade .6s;
+            -moz-animation: fade .6s;
+            animation: fade .6s;
+            overflow: auto;
+        }
+
+        .popup {
+            top: 0;
+            left: 0;
+            right: 0;
+            font-size: 14px;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            padding: 15px 20px;
+            border: 1px solid #383838;
+            background: #fefefe;
+            z-index: 1000;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+            -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, .22), 0 19px 60px rgba(0, 0, 0, .3);
+            -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, .22), 0 19px 60px rgba(0, 0, 0, .3);
+            -ms-box-shadow: 0 15px 20px rgba(0, 0, 0, .22), 0 19px 60px rgba(0, 0, 0, .3);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, .22), 0 19px 60px rgba(0, 0, 0, .3);
+            -webkit-animation: fade .6s;
+            -moz-animation: fade .6s;
+            animation: fade .6s;
+        }
+
+        .popup h2,
+        .popup h3 {
+            margin: 0 0 1rem 0;
+            font-weight: 300;
+            line-height: 1.3;
+            color: #009032;
+            text-shadow: 1px 2px 4px #ddd;
+        }
+
+        .close {
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            border: none;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            background-color: rgba(0, 131, 119, 0.9);
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .close:before {
+            color: rgba(255, 255, 255, 0.9);
+            content: "X";
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            text-decoration: none;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .close:hover {
+            background-color: rgba(252, 20, 0, 0.8);
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .pl-left,
+        .pl-right {
+            width: 25%;
+            height: auto;
+        }
+
+        .pl-right {
+            float: right;
+            margin: 5px 0 5px 15px;
+        }
+
+        .pl-left {
+            float: left;
+            margin: 5px 18px 5px 0;
+        }
+
+
+        @-moz-keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+
+        .left {
+            left: 0;
+        }
+
+
+        .right {
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            right: 0;
+            background-image: URL("./index_data/img/bg_ric.jpg ");
+            background-position: center;
+        }
+
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+
+        .centered img {
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        .custom-btn {
+            width: 130px;
+            height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+            outline: none;
+        }
+
+        .btn-7 {
+            background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
+            line-height: 42px;
+            padding: 0;
+            border: none;
+        }
+
+        .btn-7 span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-7:before,
+        .btn-7:after {
+            position: absolute;
+            content: "";
+            right: 0;
+            bottom: 0;
+            background: rgba(251, 75, 2, 1);
+            box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9), -4px -4px 5px 0px rgba(255, 255, 255, .9), 7px 7px 20px 0px rgba(0, 0, 0, .2), 4px 4px 5px 0px rgba(0, 0, 0, .3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-7:before {
+            height: 0%;
+            width: 2px;
+        }
+
+        .btn-7:after {
+            width: 0%;
+            height: 2px;
+        }
+
+        .btn-7:hover {
+            color: rgba(251, 75, 2, 1);
+            background: transparent;
+        }
+
+        .btn-7:hover:before {
+            height: 100%;
+        }
+
+        .btn-7:hover:after {
+            width: 100%;
+        }
+
+        .btn-7 span:before,
+        .btn-7 span:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            background: rgba(251, 75, 2, 1);
+            box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9), -4px -4px 5px 0px rgba(255, 255, 255, .9), 7px 7px 20px 0px rgba(0, 0, 0, .2), 4px 4px 5px 0px rgba(0, 0, 0, .3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-7 span:before {
+            width: 2px;
+            height: 0%;
+        }
+
+        .btn-7 span:after {
+            height: 2px;
+            width: 0%;
+        }
+
+        .btn-7 span:hover:before {
+            height: 100%;
+        }
+
+        .btn-7 span:hover:after {
+            width: 100%;
+        }
+
+        .header_data {
+            height: 1%;
+            width: 1%;
+        }
+    </style>
+    <div id="overlay">
+        <div class="popup">
+            <div class="split left" , style="background-color: #181b22">
+                <div class="centered">
+                    <section class="sign-in">
+                        <div class="container" , style="background-color: #373737">
+                            <div class="signin-content">
+                                <div class="signin-form">
+                                    <h2 class="form-title" , style="color: #fff">Авторизация</h2>
+                                    <form method="POST" class="register-form" id="login-form">
+                                        <div class="form-group">
+                                            <span style=" color: #fff;
+                                            font-size: 110%;">Логин: </span>
+                                            <label for="your_name"><i
+                                                    class="zmdi zmdi-account material-icons-name"></i></label>
+                                            <input type="text" id="login" name="Логин" value="test">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <span style=" color: #fff;
+                                            font-size: 110%;">Пароль: </span>
+                                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                            <input type="password" id="password" name="Пароль" value="1">
+                                            <span id="error"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="checkbox" name="remember-me" id="remember-me"
+                                                class="agree-term" />
+                                            <!-- <label for="remember-me"
+                                                class="label-agree-term"><span><span></span></span>Запомнить
+                                                меня</label>
+                                            //onclick="promptPassword()"
+                                            -->
+                                        </div>
+                                        <div class="form-group form-button">
+                                            <div id="login_password"><button class="custom-btn btn-7" type="button"
+                                                    onclick="promptPassword()">Войти</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <p><a
+                                            href="mailto:info@itiasoft.ru&cc=mail@itiasoft.ru?body=Здравствуйте, у меня возник вопрос:">Забыли
+                                            пароль?</a></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="split right">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var delay_popup = 1;
+        setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
+    </script>
+
+    <nav class="sb-topnav navbar navbar-expand navbar-dark " style="background: #373737;">
+
+        <a class="navbar-brand ps-3" href="./index.html">
+            <div id="header_data">Гачисты</div>
+        </a>
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Найти..." aria-label="Найти..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li>
+                        <div class="dropdown-header"> Кожанный</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-header"> Мастер</div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" type="button" onclick="sendMeToProfile()">Профиль</a></li>
+                    <li><a class="dropdown-item" type="button" onclick="sendMeToEdit()">Настройки</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" id="Quit">Выход</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        .tree {
+            background-color: #222b45;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0
+        }
+
+        .row-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            background-color: blue;
+            overflow: hidden;
+        }
+
+        .first-row {
+            background-color: lime;
+        }
+
+        .second-row {
+            flex-grow: 1;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+
+    <div id="content">
+        <div class="tree">
+            <TABLE border=0 height=100% align=left width=100%>
+                <TR>
+                    <TD id="TD" width=10% align=left valign=top
+                        style="background-color:#373737;BORDER-RIGHT:0.1rem   solid #101426;">
+                        <ul id="tree" class="ztree" style="width:100%; overflow:hidden;"></ul>
+                    </TD>
+        </div>
+        <TD width=90% align=left valign=top>
+            <div class="row-container">
+                <IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=yes width=100% frameborder="0"
+                style="border: 5px solid #181b22" class="second-row"></IFRAME>
+
+              </div>
+            
+        </TD>
+        </TR>
+        </TABLE>
+    </div>
+
+    <div id="footer">
+        <h6 class="form-title" , style="color: #fff">
+            <div id="footer_data"> </div>
+        </h6>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        var Year
+        var date = new Date();
+        var footerdata;
+        footerdata = "&#169; " + "Company_Name " + date.getFullYear();
+        document.getElementById("footer_data").innerHTML = footerdata;
+
+
+
+        function promptPassword(pass_answer) {
+            error_msg = pass_answer;
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        var zNodes = [
+            { id: 1, pId: 0, name: "Клуб кожжевного мастерства", open: false, iconSkin: "alarm", },
+            { id: 101, pId: 1, name: "Когда смениться босс бани?", file: "../pages/Page_2", iconSkin: "normal", },
+            { id: 102, pId: 1, name: "All Dungeon masters", file: "../pages/Page_3", iconSkin: "normal", },
+            { id: 103, pId: 1, name: "Музыка для жизни", file: "../pages/Page_4", iconSkin: "normal", },
+            { id: 104, pId: 1, name: "Видеоряд", file: "./Page_5", iconSkin: "normal", },
+            { id: 105, pId: 1, name: "Танцы", file: "./Page_6", iconSkin: "normal", },
+
+            { id: 2, pId: 2, name: "Новый клуб кожевного мастерства", open: false, iconSkin: "alarm", },
+            { id: 203, pId: 2, name: "Видеоряд", file: "./Page_5", iconSkin: "normal", },
+            { id: 204, pId: 2, name: "Танцы", file: "./Page_6", iconSkin: "normal", },
+
+
+        ];
+
+        $(document).ready(function () {
+            var t = $("#tree");
+            t = $.fn.zTree.init(t, setting, zNodes);
+            demoIframe = $("#testIframe");
+            demoIframe.bind("load", loadReady);
+            var zTree = $.fn.zTree.getZTreeObj("tree");
+            zTree.selectNode(zTree.getNodeByParam("id", 101));
+
+        });
+
+        function loadReady() {
+            var bodyH = demoIframe.contents().find("body").get(0).scrollHeight,
+                htmlH = demoIframe.contents().find("html").get(0).scrollHeight,
+                maxH = Math.max(bodyH, htmlH), minH = Math.min(bodyH, htmlH),
+                h = demoIframe.height() >= maxH ? minH : maxH;
+            if (h < 530) h = 530;
+            demoIframe.height(h);
+        }
+
+        document.getElementById("Quit").addEventListener("click", function () {
+            window.location.reload();
+            window.top.location.reload();
+        });
+        function sendMeToEdit() {
+            document.getElementById('testIframe').src = "./admin/datatables/index.html";
+        };
+        function sendMeToProfile() {
+            document.getElementById('testIframe').src = "./admin/Profile/index.html";
+        };
+    </script>
+
+    <style type="text/css">
+        .ztree li span.button.normal_ico_open {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.normal_ico_close {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_open {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_close {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.alarm_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/2.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.normal_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/1.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+
+        .ztree li span.button.model_ico_docu {
+            margin-right: 2px;
+            background: url(./index_data/img/icon/4.png) no-repeat scroll 0 0 transparent;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+    </style>
+
+    <script type="text/javascript" src="./index_data/js/jquery.mmenu.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+</BODY>
+
+</HTML>
