@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        canvas {
+            border: 10px rgb(212, 58, 58);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="risovach" width="800" height="800"></canvas>
+
+    <script>
+        var canvas = document.getElementById("#risovach");
+        var context = canvas.getContext("2d");
+
+        /* krywa */
+        context.beginPath();
+        context.moveTo(100, 100);
+        context.lineTo(175, 55);
+        context.lineTo(250, 100);
+        context.closePath();
+        context.stroke();
+        context.fillStyle = "#CD5C5C";
+        context.fill();
+
+        /* dom */
+        context.beginPath;
+        context.rect(125, 100, 100, 100)
+        context.strokeStyle = "Black";
+        context.stroke();
+
+        /*door in dom*/
+        context.beginPath;
+        context.fillStyle = "Blue";
+        context.fillRect(150, 125, 50, 75);
+
+        /* mawina */
+        context.beginPath();
+        context.lineWidth = "2";
+        context.strokeStyle = "Green";
+        context.fillStyle = "#FFFF00";
+        context.fill;
+        context.moveTo(325, 180);
+        context.lineTo(325, 160);
+        context.lineTo(350, 160);
+        context.lineTo(360, 140);
+        context.lineTo(400, 140);
+        context.lineTo(425, 160);
+        context.lineTo(450, 160);
+        context.arcTo(460, 160, 465, 165, 5);
+        context.lineTo(455, 180);
+        context.lineTo(325, 180);
+        context.arc(435, 180, 12, 0, 2 * Math.PI); /*Переднее колесо*/
+        context.arc(360, 180, 12, 0, 2 * Math.PI); /*Заднее колесо*/
+
+        /*door*/
+        context.moveTo(360, 140);
+        context.lineTo(360, 160);
+        context.lineTo(385, 180);
+        context.lineTo(410, 180);
+        context.lineTo(410, 149);
+        context.stroke();
+
+    </script>
+</body>
+
+</html>
