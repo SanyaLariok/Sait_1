@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Когда смениться босс бани?</title>
+    <link rel="icon" href="../img/favicon/Artur love.svg" type=" image/svg+xml">
+
+
+    <link rel="stylesheet" href="./css/style_page_2.css" type="text/css">
+
+    <!--[if IE]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="header"></div>
+
+        <div id="sidebar">
+            <ol class="rounded">
+                <li><a href="../index.html">Домой</a></li>
+                <li><a href="./Page_2.html">Когда смениться босс бани?</a></li>
+                <li><a href="./Page_3.html">All Dungeon masters</a></li>
+                <li><a href="./Page_4.html">Музыка для жизни</a></li>
+                <li><a href="./Canvas.html"><Canvas></Canvas></a></li>
+                <li><a href="../pages_rom/index.html">Другой вариант компоновки</a></li>
+                <li><a href="../pages_rom/Page_5.html">Видеоряд</a></li>
+                <li><a href="../pages_rom/Page_6.html">Танцы</a></li>
+            </ol>
+        </div>
+   
+        <div id="content">
+            <canvas id="risovach" width="800" height="800"></canvas>
+            <style>
+                canvas {
+                    border: 10px rgb(212, 58, 58);
+                }
+        
+            </style>
+            <script>
+                var canvas=document.getElementById("#risovach");
+                var context = canvas.getContext ("2d");
+                
+                /* krywa */
+                context.beginPath();
+                context.moveTo (100, 100);
+                context.lineTo (175,55);
+                context.lineTo (250, 100);
+                context.closePath();
+                context.stroke();
+                context.fillStyle="#CD5C5C";
+                context.fill();
+        
+                /* dom */
+                context.beginPath;
+                context.rect(125,100,100,100)
+                context.strokeStyle="Black";
+                context.stroke();
+        
+                /*door in dom*/
+                context.beginPath;
+                context.fillStyle="Blue";
+                context.fillRect(150,125,50,75);
+        
+                /* mawina */
+                context.beginPath();
+                context.lineWidth="2";
+                context.strokeStyle="Green";
+                context.fillStyle="#FFFF00";
+                context.fill;
+                context.moveTo(325,180);
+                context.lineTo(325,160);
+                context.lineTo(350,160);
+                context.lineTo(360,140);
+                context.lineTo(400,140);
+                context.lineTo(425,160);
+                context.lineTo(450,160);
+                context.arcTo(460,160,465,165,5);
+                context.lineTo(455,180);
+                context.lineTo(325,180);
+                context.arc(435,180,12,0,2*Math.PI); /*Переднее колесо*/
+                context.arc(360,180,12,0,2*Math.PI); /*Заднее колесо*/
+                
+                /*door*/
+                context.moveTo(360,140);
+                context.lineTo(360,160);
+                context.lineTo(385,180);
+                context.lineTo(410,180);
+                context.lineTo(410,149);
+                context.stroke();
+                
+                </script>
+</div>  
+
+    <div id="footer_data"></div>
+
+    <script type="text/javascript" src="../js/main_script.js"></script>
+    <script type="text/javascript" src="../pages/js/js_1.js"></script>
+</body>
+
+</html>
