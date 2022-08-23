@@ -95,6 +95,35 @@
         <a class="navbar-brand ps-3" href="./index.html">
             <div id="header_data">Гачисты</div>
         </a>
+          <!-- add styles and scripts -->
+    <link href="/index_data/audio/styles.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/index_data/audio/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="/index_data/audio/main.js"></script>
+        <div class="example">
+
+            <div class="player">
+                <div class="pl"></div>
+                <div class="title"></div>
+                <div class="artist"></div>
+                <div class="cover"></div>
+                <div class="controls">
+                    <div class="play"></div>
+                    <div class="pause"></div>
+                    <div class="rew"></div>
+                    <div class="fwd"></div>
+                </div>
+                <div class="volume"></div>
+                <div class="tracker"></div>
+            </div>
+            <ul class="playlist hidden">
+                <li audiourl="02.mp3" cover="cover2.jpg" artist="Artist 1">01.mp3</li>
+                <li audiourl="03.mp3" cover="cover3.jpg" artist="Artist 2">02.mp3</li>
+                <li audiourl="04.mp3" cover="cover4.jpg" artist="Artist 3">03.mp3</li>
+            </ul>
+    
+        </div>
+        
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Найти..." aria-label="Найти..."
@@ -103,7 +132,8 @@
                         class="fas fa-search"></i></button>
             </div>
         </form>
-
+      
+        
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
