@@ -1,199 +1,68 @@
-<!DOCTYPE HTML PUBLIC>
-<HTML>
+<!DOCTYPE html>
+<html>
 
-<HEAD>
-    <TITLE>Панель управления</TITLE>
+<head>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="icon" href="./index_data/img/favicon.svg" type=" image/svg+xml">
+    <title>Гачисты</title>
+    <link rel="icon" href="./img/favicon/Artur love.svg" type=" image/svg+xml">
+    <link rel="stylesheet" href="./css/main_style.css" type="text/css">
 
-    <link rel="stylesheet" href="./index_data/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="./index_data/css/style_.css" />
-    <link rel="stylesheet" href="./index_data/css/signin.css">
-    <link rel="stylesheet" href="./index_data/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <link href="./index_data/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="./index_data/css/bootstrap/bootstrap-extended.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="./index_data/css/main.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!--[if IE]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
+</head>
 
-    <script type="text/javascript" src="./index_data/js/Chart.js/chart.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery.min3.1.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./index_data/js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="./index_data/js/ztreee.js"></script>
+<body>
 
- 
-</HEAD>
+    <div id="container">
 
-<BODY>
-    <div id="overlay">
-        <div class="popup">
-            <div class="split left" , style="background-color: #181b22">
-                <div class="centered">
-                    <section class="sign-in">
-                        <div class="container" , style="background-color: #373737">
-                            <div class="signin-content">
-                                <div class="signin-form">
-                                    <h2 class="form-title" , style="color: #fff">DUNGEON MASTER?</h2>
-                                    <form method="POST" class="register-form" id="login-form">
-                                        <div class="form-group">
-                                            <span style=" color: #fff;
-                                            font-size: 110%;">MASTER: </span>
-                                            <label for="your_name"><i
-                                                    class="zmdi zmdi-account material-icons-name"></i></label>
-                                            <input type="text" id="login" name="Логин" value="test">
+        <div id="header"></div>
 
-                                        </div>
-                                        <div class="form-group">
-                                            <span style=" color: #fff;
-                                            font-size: 110%;">Slave: </span>
-                                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                            <input type="password" id="password" name="Пароль" value="1">
-                                            <span id="error"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="checkbox" name="remember-me" id="remember-me"
-                                                class="agree-term" />
-                                            <!-- <label for="remember-me"
-                                                class="label-agree-term"><span><span></span></span>Запомнить
-                                                меня</label>
-                                            //onclick="promptPassword()"
-                                            -->
-                                        </div>
-                                        <div class="form-group form-button">
-                                            <div id="login_password"><button class="custom-btn btn-7" type="button"
-                                                    onclick="promptPassword()">Войти</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <p><a
-                                            href="mailto:info@itiasoft.ru&cc=mail@itiasoft.ru?body=Здравствуйте, у меня возник вопрос:">Забыли
-                                            пароль?</a></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div class="split right">
-            </div>
+        <div id="sidebar">
+            <ol class="rounded">
+                <li><a href="./index.html">Домой</a></li>
+                <li><a href="./pages/Page_2.html">Когда смениться босс бани?</a></li>
+                <li><a href="./pages/Page_3.html">All Dungeon masters</a></li>
+                <li><a href="../pages/Page_4.html">Музыка для жизни</a></li>
+                <li><a href="./pages_rom/Page_5.html">1</a></li>
+                <li><a href="./pages_rom/Page_6.html">2</a></li>
+                <li><a href="./pages_rom/Page_7.html">3</a></li>
+              </ol>
         </div>
-    </div>
-    <script type="text/javascript">
-        var delay_popup = 1;
-        setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
-    </script>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark " style="background: #373737;">
-
-        <a class="navbar-brand ps-3" href="./index.html">
-            <div id="header_data">Гачисты</div>
-        </a>
-          <!-- add styles and scripts -->
-    <link href="./data/styles.css" rel="stylesheet" type="text/css" />
-
-    <script type="text/javascript" src="./data/jquery-ui-1.8.21.custom.min.js"></script>
-    <script type="text/javascript" src="./data/main.js"></script>
-
-        <div class="example">
-
-            <div class="player">
-                <div class="pl"></div>
-                <div class="title"></div>
-                <div class="artist"></div>
-                <div class="cover"></div>
-                <div class="controls">
-                    <div class="play"></div>
-                    <div class="pause"></div>
-                    <div class="rew"></div>
-                    <div class="fwd"></div>
-                </div>
-                <div class="volume"></div>
-                <div class="tracker"></div>
-            </div>
-            <ul class="playlist hidden">
-                <li audiourl="02.mp3" cover="cover2.jpg" artist="Artist 1">01.mp3</li>
-                <li audiourl="03.mp3" cover="cover3.jpg" artist="Artist 2">02.mp3</li>
-                <li audiourl="04.mp3" cover="cover4.jpg" artist="Artist 3">03.mp3</li>
-            </ul>
-    
+        <div id="content">
+            <h2>Типичные представители гачи сообщества</h2>
+            <img src="./img/1.jpg" alt="Artur" class="img">
+            <table border="1" width="100%" cellpadding="5">
+                <caption>Оценка Гачисквада</caption> 
+                <tr>
+                 <th>Van Darkholme</th>
+                 <th>9/10</th>
+                </tr>
+                <tr>
+                 <td>Billy Herrington</td>
+                 <td>9.2/10</td>
+               </tr>
+               <tr>
+                <td>Ricardo Milos</td>
+                <td>9.9/10</td>
+              </tr>
+              <tr>
+                <td>Artur Gilemkhanov</td>
+                <td>10/10</td>
+              </tr>
+              </table>
+            
         </div>
-        
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Найти..." aria-label="Найти..."
-                    aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                        class="fas fa-search"></i></button>
-            </div>
-        </form>
-      
-        
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <div class="dropdown-header"> Кожанный</div>
-                    </li>
-                    <li>
-                        <div class="dropdown-header"> Мастер</div>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" type="button" onclick="sendMeToProfile()">Профиль</a></li>
-                    <li><a class="dropdown-item" type="button" onclick="sendMeToEdit()">Настройки</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" id="Quit">Выход</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
 
-    <div id="content">
-        <div class="tree">
-            <TABLE border=0 height=100% align=left width=100%>
-                <TR>
-                    <TD id="TD" width=10% align=left valign=top
-                        style="background-color:#373737;BORDER-RIGHT:0.1rem   solid #101426;">
-                        <ul id="tree" class="ztree" style="width:100%; overflow:hidden;"></ul>
-                    </TD>
-        </div>
-        <TD width=90% align=left valign=top>
-            <div class="row-container">
-                <IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=yes width=100% frameborder="0"
-                style="border: 5px solid #181b22" class="second-row"></IFRAME>
-              </div>
-        
-        </TD>
-        </TR>
-        </TABLE>
-    </div>
+        <div id="footer_data"></div>
 
-    <div id="footer">
-        <h6 class="form-title" , style="color: #fff">
-            <div id="footer_data"> </div>
-        </h6>
-        <div id="output"></div>
     </div>
 
 
-    <script type="text/javascript" src="./index_data/js/jquery.mmenu.all.min.js"></script>
-    <script type="text/javascript" src="./index_data/js/script_init_ztree.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/main_script.js"></script>
+</body>
 
-</BODY>
-
-</HTML>
+</html>
